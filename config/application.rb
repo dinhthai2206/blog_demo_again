@@ -24,5 +24,6 @@ module BlogDemo
       authentication:       'plain',
       enable_starttls_auto: true
     }
+    config.action_view.embed_authenticity_token_in_remote_forms = true    
   end
 end
