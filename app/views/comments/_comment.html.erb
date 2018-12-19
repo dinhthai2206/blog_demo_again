@@ -1,0 +1,13 @@
+<li class="list-group-item" id="comment-<%= comment.id %>">
+  <span>
+    <%= link_to gravatar_for(comment.user, size: 30), comment.user %>
+    <%= link_to comment.user.name, comment.user %></br>
+    <%= comment.content %>
+  </span>
+  <% if current_user? comment.user %> 
+    <%= link_to "Edit", edit_comment_path(comment) %>
+    <%= link_to "Delete", comment, method: :delete, data: {confirm: "Delete this comment?"}%>
+  <% elsif logged_in? && current_user.admin? || current_user?(comment.micropost.user) %>
+    <%= link_to "Delete", comment, method: :delete, data: {confirm: "Delete this comment?"}%>
+  <% end %>
+</li>

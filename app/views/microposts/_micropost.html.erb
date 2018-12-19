@@ -12,4 +12,15 @@
       <%= link_to "delete", micropost, method: :delete, data:{confirm: "You sure?"} %>
     <% end %>
   </span>
+  <% if logged_in? %>
+    <span class="list-group-item">
+      <%= render "shared/comment_form", micropost: micropost %>
+    </span>
+  <% end %>
+  <h4 id="comments">
+    Comments (<%= micropost.comments.count %>)
+  </h4>
+  <li class="list-group">
+    <%= render micropost.comments %>
+  </li>
 </li>

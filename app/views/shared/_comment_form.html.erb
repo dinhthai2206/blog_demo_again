@@ -1,0 +1,9 @@
+<%= form_for @comment do |f| %>
+  <div class="field">
+    <%= f.hidden_field :micropost_id, value: "#{micropost.id}" %>
+    <%= f.hidden_field :user_id, value: "#{current_user.id}" %>
+
+    <%= f.text_field :content, placeholder: "Your comment..." %>
+    <%= f.submit "Comment", class: "btn btn-primary" %>
+  </div>
+<% end %>
