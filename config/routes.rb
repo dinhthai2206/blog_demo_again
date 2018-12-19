@@ -14,9 +14,11 @@ Rails.application.routes.draw do
     resources :following, :followers, only: [:index]
   end
   resources :account_activations, only: [:edit]
-  resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :microposts,          only: [:create, :destroy]
-  resources :relationships,       only: [:create, :destroy]
+  resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :microposts, only: [:create, :edit, :update, :destroy] do
+    resources :likes, only: [:create, :destroy]
+  end
+  resources :relationships, only: [:create, :destroy]
   resources :comments
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
