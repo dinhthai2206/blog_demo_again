@@ -4,10 +4,18 @@
     <%= link_to comment.user.name, comment.user %></br>
     <%= comment.content %>
   </span>
-  <% if current_user? comment.user %> 
-    <%= link_to "Edit", edit_comment_path(comment) %>
-    <%= link_to "Delete", comment, method: :delete, data: {confirm: "Delete this comment?"}%>
-  <% elsif logged_in? && current_user.admin? || current_user?(comment.micropost.user) %>
-    <%= link_to "Delete", comment, method: :delete, data: {confirm: "Delete this comment?"}%>
-  <% end %>
+  <div class='timestamp'>
+    <%= time_ago_in_words(comment.created_at) %> ago
+    <% if current_user? comment.user %> 
+      <%= link_to "Edit", "#editForm#{comment.id}",
+            data: {toggle: 'collapse'},
+            aria: {expanded: 'false', controls: "#editForm#{comment.id}"} %>
+      <%= link_to "Delete", comment, remote: true, method: :delete, data: {confirm: "Delete this comment?"}%>
+        <div class='collapse' id=<%="editForm#{comment.id}"%>>
+          <%= render 'comments/form', comment: comment, micropost: comment.micropost %>
+        </div>
+    <% elsif logged_in? && current_user.admin? || current_user?(comment.micropost.user) %>
+      <%= link_to "Delete", comment, remote: true, method: :delete, data: {confirm: "Delete this comment?"}%>
+    <% end %>
+  </div>
 </li>

@@ -1,40 +1,51 @@
 class CommentsController < ApplicationController
+  before_action :find_comment, only: %i(edit update destroy)
   before_action :logged_in_user, only: :create
-  before_action :correct_user,   only: [:edit, :update, :destroy]
+  before_action :correct_user, only: %i(edit update destroy)
 
   def create
-    @comment = Comment.new comment_params
+    @comment = current_user.comments.build comment_params
+    @micropost = @comment.micropost
     if @comment.save
-      redirect_to request.referrer   
-    else 
+      respond_to do |format|
+        format.html {redirect_to request.referrer}
+        format.js
+      end
+    else
       flash[:danger] = "Comment failed"
       redirect_to request.referrer
     end
   end
 
-  def edit
-    @comment = Comment.find_by id: params[:id]
-  end
-  
   def update
-    @comment = Comment.find_by id: params[:id]
+    @micropost = @comment.micropost
     if @comment.update_attributes comment_params
-      flash[:success] = "Comment updated"
-      redirect_to request.referrer
+      respond_to do |format|
+        format.html {redirect_to request.referrer}
+        format.js
+      end
     else
-      render :edit
+      redirect_to request.referrer
     end
   end
 
   def destroy
-    @comment = Comment.find_by id: params[:id]
+    @micropost = @comment.micropost
     @comment.destroy
-    redirect_to request.referrer
+    respond_to do |format|
+      format.html {redirect_to request.referrer}
+      format.js
+    end
   end
 
   private
+
+  def find_comment
+    @comment = Comment.find_by id: params[:id]
+  end
+
   def comment_params
-    params.require(:comment).permit :content, :micropost_id, :user_id
+    params.require(:comment).permit :content, :micropost_id
   end
 
   def correct_user

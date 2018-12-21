@@ -8,29 +8,26 @@
   </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-    <% if current_user?(micropost.user) %>
+    <% if current_user? micropost.user %>
+      <%= link_to "edit", edit_micropost_path(micropost) %>
       <%= link_to "delete", micropost, method: :delete, data:{confirm: "You sure?"} %>
     <% end %>
   </span>
-  <span>
-    <%= micropost.likes.count %> <%= micropost.likes.count < 2 ? "Like" : "Likes" %>
+  <span id="likes">
+    <%= pluralize(micropost.likes.count, "like") %>
   </span>
   <% if logged_in? %>
-    <% if current_user.liked? micropost %>
-      <% liked = micropost.likes.find_by user_id: current_user.id %>
-      <%= link_to "Unlike", micropost_like_path(micropost, liked), method: :delete %>
-    <% else %>
-      <%= link_to "Like", micropost_likes_path(micropost), method: :post %>
-    <% end %>
-
-    <span class="list-group-item">
-      <%= render "shared/comment_form", micropost: micropost %>
-    </span>
+    <div class="like_or_unlike"> 
+      <%= render "microposts/likes/button", micropost: micropost %>
+    </div>
+    <div class="list-group-item">
+      <%= render "comments/form", comment: Comment.new, micropost: micropost %>
+    </div>
   <% end %>
   <h4 id="comments">
     Comments (<%= micropost.comments.count %>)
   </h4>
-  <li class="list-group">
+  <ul class="list-group">
     <%= render micropost.comments %>
-  </li>
+  </ul>
 </li>

@@ -96,8 +96,8 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-  def liked? micropost
-    micropost.likes.find_by(user_id: id).present?
+  def likes? micropost
+    micropost.likes.where(user_id: id).any?
   end
 
   private

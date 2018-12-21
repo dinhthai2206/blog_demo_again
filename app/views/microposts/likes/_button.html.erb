@@ -1,0 +1,7 @@
+<div>
+  <% if current_user.likes? micropost %>
+    <%= link_to "Unlike", micropost_like_path(micropost), remote: true, method: :delete %>
+  <% else %>
+    <%= link_to "Like", micropost_like_path(micropost), remote: true, method: :post %>
+  <% end %>
+</div>

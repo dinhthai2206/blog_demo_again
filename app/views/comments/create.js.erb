@@ -1,3 +1,3 @@
-$(".list-group").append("<%= escape_javascript(render('comments/comment', comment: @comment)) %>");
+$("#micropost-<%= @micropost.id %> .list-group").append("<%= escape_javascript(render('comments/comment', comment: @comment)) %>");
 $("#new_comment #comment_content").val("");
-$("#comments").html("Comments (<%= micropost.comments.count %>)");
+$("#micropost-<%= @micropost.id %> #comments").html("Comments (<%= @micropost.comments.count %>)");
