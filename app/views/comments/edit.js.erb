@@ -1,0 +1,6 @@
+$('#myModal').html('<%= escape_javascript(render('modal', comment: @comment, micropost: @micropost)) %>');
+$('#form_modal').modal('show');
+$("#my-modal").modal("hide");
+$("#my-modal").hide();
+$('.modal-backdrop').hide();
+$("body").removeClass("modal-open");

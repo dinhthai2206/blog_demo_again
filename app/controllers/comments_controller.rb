@@ -3,6 +3,14 @@ class CommentsController < ApplicationController
   before_action :logged_in_user, only: :create
   before_action :correct_user, only: %i(edit update destroy)
 
+  def edit
+    @micropost = @comment.micropost
+    respond_to do |format|
+      format.html
+      format.js
+    end  
+  end
+
   def create
     @comment = current_user.comments.build comment_params
     @micropost = @comment.micropost
