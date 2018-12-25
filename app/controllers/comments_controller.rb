@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_comment, only: %i(edit update destroy)
-  before_action :logged_in_user, only: :create
+  before_action :authenticate_user!, only: :create
   before_action :correct_user, only: %i(edit update destroy)
 
   def edit

@@ -16,7 +16,7 @@
         <!--<div class='collapse' id=<%="editForm#{comment.id}"%>>
           <%= render 'comments/form', comment: comment, micropost: comment.micropost %>
         </div>-->
-    <% elsif logged_in? && current_user.admin? || current_user?(comment.micropost.user) %>
+    <% elsif user_signed_in? && current_user.admin? || current_user?(comment.micropost.user) %>
       <%= link_to "Delete", comment, remote: true, method: :delete, data: {confirm: "Delete this comment?"}%>
     <% end %>
   </div>
