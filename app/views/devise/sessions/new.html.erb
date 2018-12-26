@@ -11,12 +11,20 @@
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
-  <% if devise_mapping.rememberable? -%>
+  <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
-  <% end -%>
+  <% end %>
+
+  <div class="social-line">
+    <%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-just-icon btn-link" %>
+    <!--
+    <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-just-icon btn-link" do %>
+      <i class="fa fa-facebook-square"></i>
+    <% end %>-->
+  </div>
 
   <div class="actions">
     <%= f.submit "Log in" %>

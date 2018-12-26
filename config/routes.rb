@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
   root "static_pages#home"
   get  :help,    to: "static_pages#help"
   get  :about,   to: "static_pages#about"
   get  :contact, to: "static_pages#contact"
+  devise_for :users, controllers: {registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks"}
 
   resources :users, only: [:index, :show, :destroy] do
     resources :following, :followers, only: [:index]
