@@ -8,7 +8,7 @@
     <%= time_ago_in_words(comment.created_at) %> ago
     <% if current_user? comment.user %> 
       <%= link_to "Edit", edit_comment_path(comment), remote: true %>
-        <span id='myModal'></span>
+        <span id="myModal"></span>
       <%#= link_to "Edit", "#editForm#{comment.id}",
             data: {toggle: 'collapse'},
             aria: {expanded: 'false', controls: "#editForm#{comment.id}"} %>
