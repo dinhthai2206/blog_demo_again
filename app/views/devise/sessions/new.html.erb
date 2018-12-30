@@ -18,12 +18,9 @@
     </div>
   <% end %>
 
-  <div class="social-line">
+  <div class="social-line">Sign in with
     <%= link_to "Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-just-icon btn-link" %>
-    <!--
-    <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-just-icon btn-link" do %>
-      <i class="fa fa-facebook-square"></i>
-    <% end %>-->
+    <%= link_to "Google", user_google_oauth2_omniauth_authorize_path %>
   </div>
 
   <div class="actions">
