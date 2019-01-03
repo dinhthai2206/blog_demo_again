@@ -1,2 +1,2 @@
 $('#comment-<%= @comment.id %>').remove();
-$('#comments').html('Comments (<%= @micropost.comments.count %>)');
+$('#comments').html("<%= pluralize(@micropost.comments.count, "Comment") %>");

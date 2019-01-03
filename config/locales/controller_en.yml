@@ -1,0 +1,29 @@
+en:
+  microposts:
+    likes:
+      create:
+        failed: You haven't liked yet!
+
+  comments:
+    create:
+      failed: Comment failed!
+  
+  followers:
+    index:
+      followers: Followers
+
+  following:
+    index:
+      following: Following
+
+  microposts:
+    create:
+      success: Post created!
+    edit:
+      updated_success: Post updated!
+    destroy:
+      post_deleted: Post deleted!
+
+  users:
+    correct_user:
+      cant_edit: You can't edit this user.

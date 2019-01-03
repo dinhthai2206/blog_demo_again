@@ -1,18 +1,18 @@
-<% provide :title, "Edit post" %>
+<% provide :title, t(".edit") %>
 
 <%= form_for @micropost do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <div class="field">
-    <%= f.text_field :title, placeholder: "Title:" %>
+    <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+    <%= f.text_area :content %>
   </div>
   <div class="picture">
     <%= image_tag @micropost.picture.url if @micropost.picture? %>
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
   </div>
-  <%= f.submit "Edit", class: "btn btn-primary" %>
+  <%= f.submit t(".edit"), class: "btn btn-primary" %>
 <% end %>
 
 <script type="text/javascript">

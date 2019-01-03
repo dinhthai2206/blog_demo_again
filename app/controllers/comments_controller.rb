@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
         format.js
       end
     else
-      flash[:danger] = "Comment failed"
+      flash[:danger] = t ".failed"
       redirect_to request.referrer
     end
   end

@@ -13,12 +13,6 @@ class UsersController < ApplicationController
     @comment = current_user.comments.build if user_signed_in?
   end
 
-  def destroy
-    User.find_by(id: params[:id]).destroy
-    flash[:success] = "User deleted"
-    redirect_to users_url
-  end
-
   private
 
   def user_params
@@ -30,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     unless current_user? @user
       redirect_to root_url 
-      flash[:danger] = "You can't edit this user."
+      flash[:danger] = t ".cant_edit"
     end
   end
 

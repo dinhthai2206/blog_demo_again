@@ -2,7 +2,7 @@
   <div class="field">
     <%= f.hidden_field :micropost_id, value: "#{micropost.id}" %>
 
-    <%= f.text_field :content, placeholder: "Your comment..." %>
-    <%= f.submit "Comment", class: "btn btn-primary" %>
+    <%= f.text_field :content, placeholder: t(".placeholder") %>
+    <%= f.submit t(".submit"), class: "btn btn-primary" %>
   </div>
 <% end %>

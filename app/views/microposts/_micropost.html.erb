@@ -7,10 +7,10 @@
     <%= image_tag micropost.picture.url if micropost.picture? %>
   </span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    <%= t ".posted", time: time_ago_in_words(micropost.created_at) %>
     <% if current_user? micropost.user %>
-      <%= link_to "edit", edit_micropost_path(micropost) %>
-      <%= link_to "delete", micropost, method: :delete, data:{confirm: "You sure?"} %>
+      <%= link_to t(".edit"), edit_micropost_path(micropost) %>
+      <%= link_to t(".delete"), micropost, method: :delete, data:{confirm: t(".confirm")} %>
     <% end %>
   </span>
   <span id="likes">
@@ -25,7 +25,7 @@
     </div>
   <% end %>
   <h4 id="comments">
-    Comments (<%= micropost.comments.count %>)
+    <%= pluralize(micropost.comments.count, "Comment") %>
   </h4>
   <ul class="list-group">
     <%= render micropost.comments %>

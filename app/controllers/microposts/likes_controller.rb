@@ -10,7 +10,7 @@ class Microposts::LikesController < ApplicationController
         format.js
       end
     else
-      flash[:danger] = "Like failed"
+      flash[:danger] = t ".failed"
       redirect_to request.referrer
     end
   end
