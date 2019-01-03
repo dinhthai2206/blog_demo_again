@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   get  :contact, to: "static_pages#contact"
   devise_for :users, controllers: {registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks"}
 
-  resources :users, only: [:index, :show, :destroy] do
+  resources :users, only: [:index, :show, :edit, :update, :destroy] do
     resources :following, :followers, only: [:index]
   end
-  resources :microposts, only: [:create, :edit, :update, :destroy] do
+  resources :microposts, only: [:index, :create, :edit, :update, :destroy] do
     resource :like, only: [:create, :destroy], module: :microposts
   end
   resources :relationships, only: [:create, :destroy]

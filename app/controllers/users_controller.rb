@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
   
   def index
-    @users = User.paginate(page: params[:page], per_page: 15)
+    @users = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
   end
   
   def show
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit :name, :email, :password,
       :password_confirmation
@@ -27,8 +28,10 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find params[:id]
-    flash[:danger] = "You can't edit this user."
-    redirect_to(root_url) unless current_user?(@user)
+    unless current_user? @user
+      redirect_to root_url 
+      flash[:danger] = "You can't edit this user."
+    end
   end
 
   def admin_user
