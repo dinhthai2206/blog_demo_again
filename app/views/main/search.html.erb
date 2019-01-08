@@ -1,0 +1,11 @@
+<% provide :title, t(".result") %>
+
+<div class="row">
+  <div class="col">
+    <h1><%= t ".result" %></h1>
+      <ul class="users">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate @users %>
+  </div>
+</div>

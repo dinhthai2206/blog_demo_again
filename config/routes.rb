@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get  :help,    to: "static_pages#help"
   get  :about,   to: "static_pages#about"
   get  :contact, to: "static_pages#contact"
+  get  :search,  controller: :main
   devise_for :users, controllers: {registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks"}
 
   resources :users, only: [:index, :show, :edit, :update, :destroy] do

@@ -5,8 +5,11 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li>
-            <%= search_form_for @q do |f| %>
-              <%= f.search_field :name_or_email_cont, placeholder: t(".search") %>
+            <%= form_with url: search_path, local: true, method: :get, class: "form-inline" do |form| %>
+              <div class="form-group">
+                <%= form.text_field :q, placeholder: "Search user", data: {behavior: "autocomplete"}, class: "form-control" %>
+              </div>
+              <%= form.button "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
             <% end %>
           </li>
           <li><%= link_to t(".users"), users_path %></li>

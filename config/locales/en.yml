@@ -78,6 +78,10 @@ en:
       delete: delete
       confirm: You sure?
     index:
-      users: Users
+      users: All users
     show:
-      posts: Posts ( %{count})
+      posts: Posts ( %{count} )
+  
+  main:
+    search:
+      result: Search result
