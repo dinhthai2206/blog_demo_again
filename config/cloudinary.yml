@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: 'thaimonn'
+  api_key: '511515198417827'
+  api_secret: 'zsRWhcb70_-11YnwAn4EpDOEGKY'
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: 'thaimonn'
+  api_key: '511515198417827'
+  api_secret: 'zsRWhcb70_-11YnwAn4EpDOEGKY'
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: 'thaimonn'
+  api_key: '511515198417827'
+  api_secret: 'zsRWhcb70_-11YnwAn4EpDOEGKY'
+  enhance_image_tag: true
+  static_file_support: false

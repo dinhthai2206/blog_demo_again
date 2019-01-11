@@ -1,8 +1,8 @@
 class PictureUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave
   process resize_to_limit: [400, 400]
 
-  storage :file
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
