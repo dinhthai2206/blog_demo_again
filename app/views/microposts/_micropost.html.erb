@@ -1,21 +1,21 @@
 <li id="micropost-<%= micropost.id %>">
-  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+  <%= link_to image_tag(@user.avatar.url, size: "40x40", crop: :fill), micropost.user %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
-  <span class="title"><%= micropost.title %></span>
-  <span class="content">
+  <div class="title"><%= micropost.title %></div>
+  <div>
     <%= micropost.content %>
     <%= image_tag micropost.picture.url if micropost.picture? %>
-  </span>
-  <span class="timestamp">
+  </div>
+  <span>
     <%= t ".posted", time: time_ago_in_words(micropost.created_at) %>
     <% if current_user? micropost.user %>
       <%= link_to t(".edit"), edit_micropost_path(micropost) %>
       <%= link_to t(".delete"), micropost, method: :delete, data:{confirm: t(".confirm")} %>
     <% end %>
   </span>
-  <span id="likes">
+  <div id="likes">
     <%= pluralize(micropost.likes.count, "like") %>
-  </span>
+  </div>
   <% if user_signed_in? %>
     <div class="like_or_unlike"> 
       <%= render "microposts/likes/button", micropost: micropost %>

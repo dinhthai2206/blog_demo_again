@@ -1,2 +1,2 @@
 $("#micropost-<%= @micropost.id %> .like_or_unlike").html("<%= escape_javascript(render("button", micropost: @micropost)) %>");
-$("#likes").html("<%= pluralize(@micropost.likes.count, "like") %>");
+$("#micropost-<%= @micropost.id %> #likes").html("<%= pluralize(@micropost.likes.count, "like") %>");

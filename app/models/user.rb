@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :services, dependent: :destroy
+  mount_uploader :avatar, AvatarUploader
 
   validates :name, presence: true, length: {maximum: 50}
   

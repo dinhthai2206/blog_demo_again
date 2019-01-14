@@ -31,6 +31,12 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
     </div>
 
+    <div class="picture">
+      <%= f.label :avatar %><br>
+      <%= f.file_field :avatar, accept: 'image/jpeg,image/gif,image/png' %>
+      <%= f.hidden_field :avatar_cache %>
+    </div>
+    
     <div class="actions">
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     </div>
