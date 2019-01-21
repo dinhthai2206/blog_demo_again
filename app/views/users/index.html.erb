@@ -9,9 +9,17 @@
 
 <%= will_paginate %>
 
- <div class="container">
-    <p>
-      Download:
-      <%= link_to "Excel_By_Gem_To_Xls", exports_path(format: "xls") %>
-    </p>
-  </div>
+<div class="container">
+  <p>
+    Download:
+    <%= link_to "Excel_By_Gem_To_Xls", exports_path(format: "xls") %>
+  </p>
+</div>
+
+<div>
+  <h4>Import data</h4>
+  <%= form_tag import_users_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+  <% end %>
+</div>

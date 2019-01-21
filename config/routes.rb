@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
     resources :following, :followers, only: [:index]
+    collection {post :import}
   end
   resources :microposts, only: [:index, :create, :edit, :update, :destroy] do
     resource :like, only: [:create, :destroy], module: :microposts

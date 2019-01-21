@@ -13,6 +13,11 @@ class UsersController < ApplicationController
     @comment = current_user.comments.build if user_signed_in?
   end
 
+  def import
+    User.import_file params[:file]
+    redirect_to users_path
+  end
+
   private
 
   def user_params
