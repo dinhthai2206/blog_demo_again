@@ -23,7 +23,7 @@ class MicropostsController < ApplicationController
       redirect_to request.referrer
     else
       render :edit
-    end 
+    end
   end
 
   def destroy

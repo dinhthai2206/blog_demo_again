@@ -17,7 +17,7 @@
     <%= pluralize(micropost.likes.count, "like") %>
   </div>
   <% if user_signed_in? %>
-    <div class="like_or_unlike"> 
+    <div class="like_or_unlike">
       <%= render "microposts/likes/button", micropost: micropost %>
     </div>
     <div class="list-group-item">

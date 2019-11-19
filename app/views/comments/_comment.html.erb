@@ -6,7 +6,7 @@
   </span>
   <div class='timestamp'>
     <%= time_ago_in_words(comment.created_at) %> ago
-    <% if current_user? comment.user %> 
+    <% if current_user? comment.user %>
       <%= link_to t(".edit"), edit_comment_path(comment), remote: true %>
         <span id="myModal"></span>
       <%#= link_to "Edit", "#editForm#{comment.id}",
